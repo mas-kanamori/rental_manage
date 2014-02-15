@@ -1,0 +1,10 @@
+[2014-02-11 18:55:30.702] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2014-02-11 18:55:30.706] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2014-02-11 18:55:30.707] [WARN] console - connect.limit() will be removed in connect 3.0
+[2014-02-11 18:55:30.715] [INFO] console - Express server listening on port 3000
+[2014-02-11 18:55:40.528] [INFO] [default] - 127.0.0.1 - - "GET /login HTTP/1.1" 304 - "" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36"
+[2014-02-11 18:55:40.547] [INFO] [default] - 127.0.0.1 - - "GET /js/jquery-1.10.2.min.js HTTP/1.1" 304 - "http://localhost:3000/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36"
+[2014-02-11 18:55:40.548] [INFO] [default] - 127.0.0.1 - - "GET /js/bs2.3.2/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:3000/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36"
+[2014-02-11 18:55:40.550] [INFO] [default] - 127.0.0.1 - - "GET /css/bs2.3.2/bootstrap.css HTTP/1.1" 304 - "http://localhost:3000/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36"
+[2014-02-11 18:55:40.551] [INFO] [default] - 127.0.0.1 - - "GET /css/style.css HTTP/1.1" 304 - "http://localhost:3000/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36"
+[2014-02-11 18:55:44.036] [INFO] [default] - 127.0.0.1 - - "POST /login HTTP/1.1" 404 - "http://localhost:3000/login" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36"

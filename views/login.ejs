@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <!-- Bootstrap core CSS -->
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bs2.3.2/bootstrap.min.js"></script>
+    <link rel='stylesheet' href='/css/bs2.3.2/bootstrap.css' />
+
+    <link rel='stylesheet' href='/css/style.css' />
+
+
+    <title>Rental Manage</title>
+
+  </head>
+
+  <body class="top-margin70">
+      <div class="container login">
+        <div class="row">
+          <div class="span4 offset4">
+            <a class ="title">Rental Manage</a>
+            <p>レンタル管理サービスへようこそ！</p>
+            <div class="dialog login">
+              <div class="contents">
+
+                <form action="/login" method="post" class="well">
+                  <label>USERNAME:</label>
+                  <input type="text" name="account">
+                  <p></p>
+                  <label>PASSWORD:</label>
+                  <input type="password" name="password">
+
+                  <div class="control-group">
+                    <input type="submit" value="login" class="btn">
+                  </div>
+                </form>
+
+              </div>
+            </div>
+            <!--ログイン失敗メッセージ-->
+            <% if (loginFailed == true) { %>
+               <p style="color:red">USERNAMEもしくはPASSWORDに間違いがあります。<br></p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

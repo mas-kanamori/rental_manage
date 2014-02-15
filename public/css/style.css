@@ -1,0 +1,195 @@
+/*** 汎用 ***/
+/* WOFFフォント設定 */
+@font-face {
+  font-family:'font_ipa_min';
+  src: url("/font/ipaexm.woff") format('woff');
+}
+
+@font-face {
+  font-family:'font_ipa_gos';
+  src: url("/font/ipaexg.woff") format('woff');
+}
+
+.title{
+  font-size:32px;
+  color:#000000;
+}
+
+.right{
+    text-align:right;
+}
+
+.left{
+    text-align:left;
+}
+
+.center{
+    text-align:center;
+}
+
+.top-margin20{
+  padding-top: 20px;
+}
+
+.top-margin70{
+  padding-top: 70px;
+}
+
+.under-margin20{
+  padding-bottom: 20px;
+}
+
+/* liは点を表示しない */
+li {
+list-style: none;
+}
+
+/* ボタン */
+.btn-primary{
+  border-color:#BDBDBD;
+  background-color: #F2F2F2;
+  color: #000000;
+}
+
+.btn-primary:hover{
+  border-color:#BDBDBD;
+  background-color: #BDBDBD;
+  color: #000000;
+}
+
+
+/*** 部品別指定 ***/
+
+/* TOPカテゴリー文字 */
+.toplist-home{
+  color: #000000;
+  font-size: large;
+  font-family:'font_ipa_gos', sans-serif;
+}
+
+.toplist-category{
+  color: rgb(92,184,92);
+  font-size: medium;
+  font-family:'font_ipa_gos', sans-serif;
+}
+
+.toplist{
+  color: #000000;
+  font-size: small;
+  font-family:'font_ipa_gos', sans-serif;
+}
+
+/* ナビゲーションバーの色 */
+.navbar-fixed-top{
+  background-color: #F2F2F2;
+  border-color:#BDBDBD;
+}
+
+/* ナビゲーションバーのロゴ文字 */
+.navbar-inverse .navbar-brand {
+  color: #000000;
+}
+
+/* ナビゲーションバーの右メニュー文字 */
+.collapse > ul > .dropdown > a {
+  color: #000000;
+}
+
+/* ナビゲーションバーの右メニュー展開時の下地 */
+.collapse > ul > .dropdown > .dropdown-toggle:visited{
+  background-color: #F2F2F2
+}
+
+/* TOP画面左メニューのデザイン */
+.col > .nav > li > a{
+  border-color:#BDBDBD;
+  background-color: #F2F2F2;
+  color: #000000;
+  border:solid 1px;
+  border-color:#BDBDBD;
+}
+
+.col > .nav > li > a:hover{
+  border-color:#BDBDBD;
+  background-color: #BDBDBD;
+  color: #000000;
+  border-color:#BDBDBD;
+}
+
+
+/* リストビュー */
+.table-bordered {
+border: 1px solid #dddddd;
+border-collapse: separate;
+border-left: 0;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.table {
+width: 100%;
+margin-bottom: 20px;
+background-color: transparent;
+border-collapse: collapse;
+border-spacing: 0;
+display: table;
+}
+
+.widget.widget-table .table {
+margin-bottom: 0;
+border: none;
+}
+
+.widget.widget-table .widget-content {
+padding: 0;
+}
+
+.widget .widget-header + .widget-content {
+border-top: none;
+-webkit-border-top-left-radius: 0;
+-webkit-border-top-right-radius: 0;
+-moz-border-radius-topleft: 0;
+-moz-border-radius-topright: 0;
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+}
+
+.widget .widget-content {
+padding: 20px 15px 15px;
+background: #FFF;
+border: 1px solid #D5D5D5;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+
+thead {
+display: table-header-group;
+vertical-align: middle;
+border-color: inherit;
+}
+
+.widget .widget-header h3 {
+top: 2px;
+position: relative;
+left: 10px;
+display: inline-block;
+margin-right: 3em;
+font-size: 14px;
+font-weight: 600;
+color: #555;
+line-height: 18px;
+text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.widget .widget-header [class^="icon-"], .widget .widget-header [class*=" icon-"] {
+display: inline-block;
+margin-left: 13px;
+margin-right: -2px;
+font-size: 16px;
+color: #555;
+vertical-align: middle;
+}
+
