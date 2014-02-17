@@ -59,6 +59,9 @@ app.get('/top', routes.top_post);
 app.post('/top', routes.top_post);
 
 
+// カートへ追加
+app.get('/top#add', routes.topAdd_post);
+
 
 
 http.createServer(app).listen(app.get('port'), function(){

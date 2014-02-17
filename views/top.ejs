@@ -19,7 +19,7 @@
 
     <!-- icons from glyphicons -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet" />
-
+    
 
   </head>
 
@@ -51,13 +51,13 @@
 
     <!-- メインコンテンツ -->
     <div class="container">
-
+    
       <div class="row">
         <div class="col col-sm-2">
         </div>
         
         <div class="col col-sm-6">
-          <!-- TOP上-検索 -->
+          <!-- TOP検索 -->
           <form action="/top" method="post" class="form-inline center";>
               <div class="form-group">
                 <input class="form-control input-sm" type="text" name="keyword" placeholder="キーワード">
@@ -67,14 +67,14 @@
         </div>
 
         <div class="col col-sm-4">
-          <!-- TOP上-検索 -->
+          <!-- TOPカート -->
           <form action="/top" method="post" class="search-inline form-inline right under-margin20";>
-            <button type="button" class="btn btn btn-success btn-sm"><span class="glyphicon glyphicon-shopping-cart"></span> カート</button>
+            <button class="btn btn btn-success btn-sm"><span class="glyphicon glyphicon-shopping-cart"></span> カート</button>
           </form>
         </div>
 
       </div>
-
+      
       <div class="row">
         <!-- TOP画面左 -->
         <div class="col col-sm-2">
@@ -104,7 +104,7 @@
                                 <div class="caption">
                                     <p><%= page.data[i].item_name %></p>
                                     <p><%= page.data[i].item_description %></p>
-                                    <p><a href="#" class="btn btn-primary">貸出</a>　<a href="#" class="btn btn-primary">返却</a></p>
+                                    <button_add><a href="#add" class="btn btn-primary btn-sm">カートへ</a></a></button_add>
                                 </div>
                         </div>
                     </li>
