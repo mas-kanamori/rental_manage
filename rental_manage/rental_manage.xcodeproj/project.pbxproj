@@ -1076,7 +1076,7 @@
 		19D941E518AA1C5400E83B96 /* authority.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = authority.js; sourceTree = "<group>"; };
 		19D941E618AA1C5400E83B96 /* logger.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = logger.js; sourceTree = "<group>"; };
 		19D941E718AA1C5400E83B96 /* util.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = util.js; sourceTree = "<group>"; };
-		19D941E918AA1C5400E83B96 /* danka_50.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = danka_50.ejs; sourceTree = "<group>"; };
+		19D941E918AA1C5400E83B96 /* danka_50.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = danka_50.ejs; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		19D941EA18AA1C5400E83B96 /* danka_detail_genzai.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = danka_detail_genzai.ejs; sourceTree = "<group>"; };
 		19D941EB18AA1C5400E83B96 /* danka_detail_kako.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = danka_detail_kako.ejs; sourceTree = "<group>"; };
 		19D941EC18AA1C5400E83B96 /* danka_detail_kihon.ejs */ = {isa = PBXFileReference; lastKnownFileType = text; path = danka_detail_kihon.ejs; sourceTree = "<group>"; };

@@ -23,8 +23,6 @@
 
 
     <!-- socket.IO -->
-    <script type="text/javascript" src="../socket/pushMessage.js"></script>
-    <script src="../socket/pushMessage.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript">
       var socket = io.connect('http://localhost:3000');
@@ -36,23 +34,31 @@
                 "接続方式::" + socket.socket.transport.name;
                 });
                 
-                var i = 1;
-                
                 // メッセージを受けたとき
                 socket.on('message', function(msg) {
-                          // メッセージを画面に表示する
-                          document.getElementById("receiveMsg").innerHTML = msg.value;
-                          });
+                  // メッセージを画面に表示する
+                  document.getElementById("receiveMsg").innerHTML = msg.value;
+                });
                           
-                          // メッセージを送る
-                          function SendMsg() {
-                            var msg = document.getElementById("message" + 1).value;
-                            // メッセージを発射する
-                            socket.emit('message', { value: msg });
-                          }
-    
-    function SendMsg2() {
-      var msg = document.getElementById("message" + 2).value;
+    // メッセージを送る
+    function SendMsg() {
+      
+      //var msg = event.srcElement.value;
+      
+      
+      //var radioList = document.getElementsById("selectItem");
+      var radioList = document.getElementsByName("selectItem");
+      var msg = "dummy";
+      for(var i=0; i<radioList.length; i++){
+        if (radioList[i].checked) {
+          msg = radioList[i].value + ":" + i;
+          //msg = document.getElementsById("selectValue"+i).value;
+        }
+      }
+      
+      
+      
+      //var msg = document.getElementById("id").value;
       // メッセージを発射する
       socket.emit('message', { value: msg });
     }
@@ -67,18 +73,14 @@
       socket.disconnect();
     }
     </script>
-
-    
-    
-    
-
+ 
 
 
   </head>
 
   <body class="top-margin70">
-    
-    <!-- ナビゲーションバー -->
+  
+    <!-- NaviBar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -102,20 +104,22 @@
       </div>
     </div>
 
-    <!-- メインコンテンツ -->
+    <!-- Main -->
     <div class="container">
       
       
+      
+      <!--
       <div id="connectId"></div>
       <div id="type"></div>
       <br>
-      <input type="text" id= <%= "message" + "1" %> value="">
-        <input type="button" value="メッセージを送る" onclick="SendMsg()">
-          <input type="text" id="message2" value="">
-            <input type="button" value="メッセージを送る2" onclick="SendMsg2()">
-              
-              <input type="button" value="切断する" onclick="DisConnect()">
-                <div id="receiveMsg"></div>
+      <input type="text" id= <%= "message2" %> value="">
+      <input type="button" value="メッセージを送る" onclick="SendMsg()">
+      <input type="text" id="message3" value="">
+      <input type="button" value="メッセージを送る2" onclick="SendMsg()">
+      <input type="button" value="切断する" onclick="DisConnect()">
+      <div id="receiveMsg"></div>
+       -->
       
       
     
@@ -171,7 +175,9 @@
                                 <div class="caption">
                                     <p><%= page.data[i].item_name %></p>
                                     <p><%= page.data[i].item_description %></p>
-                                    <button_add><a href="#add" class="btn btn-primary btn-sm">カートへ</a></a></button_add>
+                                    <input type="hidden" id="id" value=<%= page.data[i].id %>>
+                                    <input type="radio" name="selectItem" value=<%= page.data[i].id %> onclick="SendMsg()">
+                                    <!--<button_add type="radio" name="selectItem" value="<%= page.data[i].id %>" onclick="SendMsg()" class="btn btn-primary btn-sm">カートへ</button_add>-->
                                 </div>
                         </div>
                     </li>
