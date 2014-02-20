@@ -58,10 +58,13 @@ app.post('/login', routes.login_post);
 app.get('/top', routes.top_post);
 app.post('/top', routes.top_post);
 
-
 // カート画面
-app.get('/cart', routes.topAdd_post);
+//app.get('/cart', routes.cart_get);
 
+
+//***************************************
+//********* ルート情報 ******************
+//***************************************
 
 // Expressのappsオブジェクトを引数にhttp.Serverクラスのインスタンスを作成
 var server = http.createServer(app);
@@ -71,34 +74,9 @@ server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
+var socketApp = require("./socket/socketApp");
+// socket.IOサーバーの起動
+socketApp.receiveMassages(server,function(){
+  console.log('Socket.IO server listening on port ' + app.get('port'));
+});
 
-
-/**
- * Module dependencies.
- */
-
-var socketIO = require('socket.io');
-
-// soclet.IOサーバーの起動(node.jsサーバーのIPアドレスとポート番号を結びつけ)
-var io = socketIO.listen(server);
-
-// クライアントが接続してきたときの処理
-io.sockets.on('connection', function(socket) {
-              console.log("connection");
-              // メッセージを受けたときの処理
-              socket.on('message', function(data) {
-                        // つながっているクライアント全員に送信
-                        console.log("message");
-                        console.log("うふふ");
-                        io.sockets.emit('message', { value: data.value });
-                        });
-              
-              
-              // クライアントが切断したときの処理
-              socket.on('disconnect', function(){
-                        console.log("disconnect");
-                        });
-              
-              
-              });
-// add end

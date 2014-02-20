@@ -57,10 +57,3 @@ exports.top_post = function (req, res) {
   getItemList.getItemList(keyword,authCallback);
   return;
 };
-
-// TOP検索画面（post:/top）
-exports.topAdd_post = function (req, res) {
-  
-  console.log('test');
-  return;
-};

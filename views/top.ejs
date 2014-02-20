@@ -34,43 +34,42 @@
                 "接続方式::" + socket.socket.transport.name;
                 });
                 
-                // メッセージを受けたとき
+                // messageメッセージを受けたとき
                 socket.on('message', function(msg) {
-                  // メッセージを画面に表示する
-                  document.getElementById("receiveMsg").innerHTML = msg.value;
+                    // メッセージを画面に表示する
+                    document.getElementById("receiveMsg").innerHTML = msg.value;
                 });
+                
+                // disconnectionメッセージを受けたとき
+                socket.on('disconnection', function(msg) {
+                    // メッセージを画面に表示する
+                    document.getElementById("receiveMsg").innerHTML = '切断されました';
+                    socket.disconnect();
+                });
+
                           
-    // メッセージを送る
+    // messageメッセージを送る
     function SendMsg() {
-      
-      //var msg = event.srcElement.value;
-      
-      
-      //var radioList = document.getElementsById("selectItem");
-      var radioList = document.getElementsByName("selectItem");
-      var msg = "dummy";
-      for(var i=0; i<radioList.length; i++){
-        if (radioList[i].checked) {
-          msg = radioList[i].value + ":" + i;
-          //msg = document.getElementsById("selectValue"+i).value;
+        //var msg = event.srcElement.value;
+     
+        //var radioList = document.getElementsById("selectItem");
+        var radioList = document.getElementsByName("selectItem");
+        var id = "dummy";
+        for(var i=0; i<radioList.length; i++){
+            if (radioList[i].checked) {
+                msg = radioList[i].value;
+            }
         }
-      }
       
-      
-      
-      //var msg = document.getElementById("id").value;
-      // メッセージを発射する
-      socket.emit('message', { value: msg });
+        socket.emit('message', { value: msg });
     }
     
     
-    // 切断する
+    // disconnectionメッセージを送る
     function DisConnect() {
-      var msg = socket.socket.transport.sessid + "は切断しました。";
-      // メッセージを発射する
-      socket.emit('message', { value: msg });
-      // socketを切断する
-      socket.disconnect();
+        var msg = socket.socket.transport.sessid + "は切断しました。";
+      
+        socket.emit('disconnection', { value: msg });
     }
     </script>
  
@@ -109,18 +108,10 @@
       
       
       
-      <!--
       <div id="connectId"></div>
       <div id="type"></div>
-      <br>
-      <input type="text" id= <%= "message2" %> value="">
-      <input type="button" value="メッセージを送る" onclick="SendMsg()">
-      <input type="text" id="message3" value="">
-      <input type="button" value="メッセージを送る2" onclick="SendMsg()">
-      <input type="button" value="切断する" onclick="DisConnect()">
       <div id="receiveMsg"></div>
-       -->
-      
+      <input type="button" value="切断する" onclick="DisConnect()">
       
     
       <div class="row">
@@ -170,14 +161,14 @@
                 <% for(var i=0; i<page.data.length; i++) {%>
                     <li class="col col-sm-3">
                         <div class="thumbnail">
-                            <p>No.<%= page.data[i].id %></p>
+                            <p>No.<%= page.data[i].item_no %></p>
                             <img src= <%= "/img/item_img/item_id_" + page.data[i].item_id + ".jpg" %> alt="">
                                 <div class="caption">
                                     <p><%= page.data[i].item_name %></p>
                                     <p><%= page.data[i].item_description %></p>
-                                    <input type="hidden" id="id" value=<%= page.data[i].id %>>
-                                    <input type="radio" name="selectItem" value=<%= page.data[i].id %> onclick="SendMsg()">
-                                    <!--<button_add type="radio" name="selectItem" value="<%= page.data[i].id %>" onclick="SendMsg()" class="btn btn-primary btn-sm">カートへ</button_add>-->
+                                    <input type="hidden" id="id" value=<%= page.data[i].item_no %>>
+                                    <input type="radio" name="selectItem" value=<%= page.data[i].item_id %> onclick="SendMsg()">
+                                    <!--<button_add type="radio" name="selectItem" value="<%= page.data[i].item_id %>" onclick="SendMsg()" class="btn btn-primary btn-sm">カートへ</button_add>-->
                                 </div>
                         </div>
                     </li>

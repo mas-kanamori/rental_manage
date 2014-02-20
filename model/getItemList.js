@@ -9,6 +9,8 @@ var client = database.createClient();
 var async = require('async');
 
 /* 檀家追加画面メイン（post処理） */
+/* **今は使えていないが、いずれはasyncをつかった方式を実装したい** */
+/*
 exports.main = function(callback){
     // いったんはpostで入ってきたデータは正しい想定で作る
     
@@ -32,11 +34,12 @@ exports.main = function(callback){
         }
     );
 };
+*/
 
 /* 檀家追加画面でtiku&sewaninボックスの表示の利用（get処理） */
 exports.getItemList = function(keyword,callback){
   
-  var query = client.query('SELECT id, create_user, create_date, update_user, update_date, is_disabled,is_disabled, item_id, item_name, item_description, item_tag FROM m_item where is_disabled = FALSE and is_disabled = FALSE and item_tag like $1',[keyword]);
+  var query = client.query('SELECT item_id, create_user, create_date, update_user, update_date, is_disabled,is_disabled, item_no, item_name, item_description, item_tag FROM m_item where is_disabled = FALSE and is_disabled = FALSE and item_tag like $1',[keyword]);
   
   
   var rows = [];
