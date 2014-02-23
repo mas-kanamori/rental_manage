@@ -33,3 +33,5 @@
 {"ts":1392908556143,"patch":[[{"diffs":[[0,"g('start"],[1,"あああああああああああああああ"],[0,"');\n});\n"]],"start1":2106,"start2":2106,"length1":16,"length2":31}]],"length":2138,"saved":false}
 {"ts":1392910940638,"patch":[[{"diffs":[[0,"og('"],[-1,"startあああああああああああああああ'"],[1,"Socket.IO server listening on port ' + app.get('port')"],[0,");\n}"]],"start1":2105,"start2":2105,"length1":29,"length2":62}]],"length":2171,"saved":false}
 {"ts":1392910958845,"patch":[[{"diffs":[[0,"******\n\n"],[-1,"\n\n"],[0,"// Expre"]],"start1":1746,"start2":1746,"length1":18,"length2":16},{"diffs":[[0,");\n});\n\n"],[-1,"\n\n"],[0,"var sock"]],"start1":1970,"start2":1970,"length1":18,"length2":16}]],"length":2167,"saved":false}
+{"ts":1393006654280,"patch":[[{"diffs":[[0,"PORT || "],[-1,"300"],[1,"8"],[0,"0);\n    "]],"start1":413,"start2":413,"length1":19,"length2":17}]],"length":2165,"saved":false}
+{"ts":1393006687722,"patch":[[{"diffs":[[0," || "],[-1,"8"],[1,"300"],[0,"0);\n"]],"start1":417,"start2":417,"length1":9,"length2":11}]],"length":2167,"saved":false}

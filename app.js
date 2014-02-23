@@ -7,6 +7,8 @@ var express = require('express');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
+var config = require("./conf/common_config");
+
 
 var app = express();
 
@@ -17,7 +19,7 @@ var logger = log4js.getLogger();
 
 // all environments
 app.configure(function(){
-              app.set('port', process.env.PORT || 3000);
+              app.set('port', process.env.PORT || config.connectionPort);
               app.set('views', path.join(__dirname, 'views'));
               app.set('view engine', 'ejs');
               
@@ -59,7 +61,7 @@ app.get('/top', routes.top_post);
 app.post('/top', routes.top_post);
 
 // カート画面
-//app.get('/cart', routes.cart_get);
+app.get('/cart', routes.cart_get);
 
 
 //***************************************

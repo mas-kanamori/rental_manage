@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-    <title>TOP</title>
+    <title>CART</title>
 
     <!-- common_config.jsから変数を受け取るための苦肉の策、scriptへの変数の渡し方がdocument.getElementByIdしかわからないので・・・-->
     <input type="hidden" id="configUrl" value= <%= page.url%> >    
@@ -49,15 +49,25 @@
                     socket.disconnect();
                 });
 
+                          
     // messageメッセージを送る
-    function SendMsg(item_id) {
-        var msg = item_id;
+    function SendMsg() {
+        var radioList = document.getElementsByName("selectItem");
+        var id = "dummy";
+        for(var i=0; i<radioList.length; i++){
+            if (radioList[i].checked) {
+                msg = radioList[i].value;
+            }
+        }
+      
         socket.emit('message', { value: msg });
     }
+    
     
     // disconnectionメッセージを送る
     function DisConnect() {
         var msg = socket.socket.transport.sessid + "は切断しました。";
+      
         socket.emit('disconnection', { value: msg });
     }
     </script>
@@ -66,7 +76,7 @@
 
   </head>
 
-  <body class="top-margin70" onload="document.forms[0].keyword.focus();">
+  <body class="top-margin70">
   
     <!-- NaviBar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -95,13 +105,6 @@
     <!-- Main -->
     <div class="container">
     
-      <!--
-      <div id="connectId"></div>
-      <div id="type"></div>
-      <div id="receiveMsg"></div>
-      <input type="button" value="切断する" onclick="DisConnect()">
-      -->
-
         <div class="row">
             <div class="col col-sm-2">
             </div>
@@ -126,51 +129,60 @@
             </div>
         </div>
       
-        <div class="row top-margin20">
-            <!-- TOP画面左 -->
-            <div class="col col-sm-2">
-                <!-- TOP画面ユーザーメニュー -->
-                <div class="well" style="padding: 10px 0;">
-                    <ul class="nav nav-list">
-                        <li><a href="top" class="toplist-home"><span class="glyphicon glyphicon-home"></span><b> home</b></a></li>
-                        <li><span class="toplist-category"><b>　　カテゴリ</b></span></li>
-                        <li><a href="#items" class="toplist">　　　大皿</a></li>
-                        <li><a href="#reports" class="toplist">　　　その他</a></li>
-                    </ul>
-                </div>
-            </div>
-    
-            <!-- TOP画面右 -->
-            <div class="col col-sm-10">
-                <% if(page.data.length == 0) {%>
-                    <p><b>最近のおすすめ商品</b></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <p>検索HITは０件です。</p>
-                <% } %>
-    
-                <!-- 検索結果のid数でループ -->
-                <% for(var i=0; i<page.data.length; i++) {%>
-                    <li class="col col-sm-3">
-                        <div class="thumbnail">
-                            <p>No.<%= page.data[i].item_no %></p>
-                            <img src= <%= "/img/item_img/item_id_" + page.data[i].item_id + ".jpg" %> alt="">
-                            <div class="caption">
-                                <p><%= page.data[i].item_name %></p>
-                                <p><%= page.data[i].item_description %></p>
-                                <input type="hidden" id="id" value=<%= page.data[i].item_no %>>
-                                <button_add type="button" class="btn btn-primary btn-sm" onclick="SendMsg('<%= page.data[i].item_id %>')">カートへ</button_add type>
-                            </div>
-                        </div>
-                    </li>
-                <% } %>
+      <div class="row top-margin20">
+        <!-- TOP画面左 -->
+        <div class="col col-sm-2">
+            <!-- TOP画面ユーザーメニュー -->
+            <div class="well" style="padding: 10px 0;">
+                <ul class="nav nav-list">
+                    <li><a href="top" class="toplist-home"><span class="glyphicon glyphicon-home"></span><b> home</b></a></li>
+                    <li><span class="toplist-category"><b>　　カテゴリ</b></span></li>
+                    <li><a href="#items" class="toplist">　　　大皿</a></li>
+                    <li><a href="#reports" class="toplist">　　　その他</a></li>
+                </ul>
             </div>
         </div>
+
+        <!-- TOP画面右 -->
+        <div class="col col-sm-10">
+            <p class="cart-title">
+                カートに保存した商品
+            </p>
+            
+            <!-- 検索結果のid数でループ -->
+            <% for(var i=0; i<page.data.length; i++) {%>
+                <li>
+                    <div class="thumbnail">
+                        <div class="row">
+                            <div class="col col-sm-3">
+                                <p>No.<%= page.data[i].item_no %></p>
+                                <img src= <%= "/img/item_img/item_id_" + page.data[i].item_id + ".jpg" %> alt="">
+
+                            </div>
+                            <div class="col col-sm-9">
+                                    <div class="caption">
+                                        <p><b>商品名</b></p>
+                                        <p><%= page.data[i].item_name %></p>
+                                        <p><b>商品の説明</b></p>
+                                        <p><%= page.data[i].item_description %></p>
+                                        <p><b>貸出数</b></p>
+                                        <p><%= page.data[i].item_number %></p>
+                                    </div>
+                            </div>
+                        </div>   
+                    </div>
+                </li>
+            <% } %>
+            <div class="row top-margin20">
+                <!-- TOP画面左 -->
+                <div class="col col-sm-12 right">
+                    <button type="submit" class="btn btn btn-danger btn-sm" onClick="location.href='cart'"><span class="glyphicon glyphicon-ok"></span> 貸出・返却を決定する</button>
+                </div>
+            </div>
+        </div>
+      </div>
     </div>
+    
   </body>
 </html>
 
