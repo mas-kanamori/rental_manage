@@ -9,7 +9,6 @@ var http = require('http');
 var path = require('path');
 var config = require("./conf/common_config");
 
-
 var app = express();
 
 // ログの設定

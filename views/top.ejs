@@ -13,12 +13,17 @@
     <input type="hidden" id="configUrl" value= <%= page.url%> >    
     <input type="hidden" id="configPort" value= <%= page.port%> >
 
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap & jQuery JS & CSS -->
     <script src="/js/jquery-1.10.2.min.js"></script>
     <script src="/js/bs3.0.3/bootstrap.min.js"></script>
     <link rel='stylesheet' href='/css/bs3.0.3/bootstrap.css' />
 
-    <!-- Custom styles for this template -->
+    <!-- alertify JS & CSS -->
+    <script src="/js/alertify.js"></script>
+    <link rel="stylesheet" href="/css/alertify.core.css" />
+    <link rel="stylesheet" href="/css/alertify.default.css" />
+ 
+    <!-- Default CSS -->
     <link rel='stylesheet' href='/css/style.css' />
 
     <!-- icons from glyphicons -->
@@ -29,40 +34,40 @@
     <script type="text/javascript">
         var socket = io.connect("http://" + document.getElementById("configUrl").value + ":" + document.getElementById("configPort").value);
 
+        // connectメッセージを受けたとき
         socket.on('connect', function(msg) {
                 document.getElementById("connectId").innerHTML =
                 "あなたの接続ID::" + socket.socket.transport.sessid;
                 document.getElementById("type").innerHTML =
                 "接続方式::" + socket.socket.transport.name;
-                });
+        });
                 
-                // messageメッセージを受けたとき
-                socket.on('message', function(msg) {
-                    // メッセージを画面に表示する
-                    document.getElementById("receiveMsg").innerHTML = msg.value;
-                });
-                
-                // disconnectionメッセージを受けたとき
-                socket.on('disconnection', function(msg) {
-                    // メッセージを画面に表示する
-                    document.getElementById("receiveMsg").innerHTML = '切断されました';
-                    socket.disconnect();
-                });
+        // messageメッセージを受けたとき
+        socket.on('message', function(msg) {
+            // メッセージを画面に表示する
+            alertify.success("id=" + msg.value + "の商品をカートへ追加しました");
+        });
+        
+        // disconnectionメッセージを受けたとき
+        socket.on('disconnection', function(msg) {
+            // メッセージを画面に表示する
+            document.getElementById("receiveMsg").innerHTML = '切断されました';
+            socket.disconnect();
+        });
 
-    // messageメッセージを送る
-    function SendMsg(item_id) {
-        var msg = item_id;
-        socket.emit('message', { value: msg });
-    }
-    
-    // disconnectionメッセージを送る
-    function DisConnect() {
-        var msg = socket.socket.transport.sessid + "は切断しました。";
-        socket.emit('disconnection', { value: msg });
-    }
+        // messageメッセージを送る
+        function SendMsg(item_id) {
+            var msg = item_id;
+            socket.emit('message', { value: msg });
+        }
+        
+        // disconnectionメッセージを送る
+        function DisConnect() {
+            var msg = socket.socket.transport.sessid + "は切断しました。";
+            socket.emit('disconnection', { value: msg });
+        }
     </script>
  
-
 
   </head>
 
@@ -94,13 +99,14 @@
 
     <!-- Main -->
     <div class="container">
+
     
-      <!--
+<!--
       <div id="connectId"></div>
       <div id="type"></div>
       <div id="receiveMsg"></div>
       <input type="button" value="切断する" onclick="DisConnect()">
-      -->
+-->
 
         <div class="row">
             <div class="col col-sm-2">
